@@ -8,10 +8,11 @@ const projectId = '';
 const supportedChains: Chain[] = [sepolia];
 
 export const config = createConfig({
-  chains: [mainnet, sepolia],
+  chains: [mainnet, sepolia, anvil],
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/RcaBbwbqVbxxw_qr-ucozqP1KxlWRsHI'),
     [anvil.id]: http('http://127.0.0.1:8545'),
   },
+  syncConnectedChain: true,
 })

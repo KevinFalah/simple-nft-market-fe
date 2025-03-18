@@ -1,4 +1,4 @@
-export const contractAddresses = {
-    nft: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
-    marketplace: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0' 
+export const contractAddresses: {nft:`0x${string}`, marketplace: `0x${string}`} = {
+    nft: '0x8464135c8F25Da09e49BC8782676a84730C318bC',
+    marketplace: '0x71C95911E9a5D330f4D621842EC243EE1343292e' 
 }
