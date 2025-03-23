@@ -38,9 +38,9 @@ const CreateComp = () => {
     config,
   });
 
-  const { writeContractAsync: writeContractMakeItem } = useWriteContract({
-    config,
-  });
+  // const { writeContractAsync: writeContractMakeItem } = useWriteContract({
+  //   config,
+  // });
 
   const {
     data: tokenId,
@@ -161,7 +161,11 @@ const CreateComp = () => {
       const data = await res.json();
       const tokenUri = `https://ipfs.io/ipfs/${data?.IpfsHash}`;
       await mintAndList(tokenUri);
-      console.log("mintAndList tokenuri and metadata ==>> ", tokenUri, metadata);
+      console.log(
+        "mintAndList tokenuri and metadata ==>> ",
+        tokenUri,
+        metadata
+      );
     } catch (error) {
       console.error("Error uploading metadata:", error);
     }
@@ -180,9 +184,9 @@ const CreateComp = () => {
   };
 
   const approveAndMakeItem = async () => {
-    if (isFetched && tokenId && isSuccessNftMint) {
+    if (isFetched && isSuccessNftMint) {
       const _tokenId = !tokenId ? 1 : Number(tokenId) + 1;
-      console.log(_tokenId, '<- tokenApprove')
+      console.log(_tokenId, "<- tokenApprove");
       await writeContractNftApprove({
         abi: nftAbi,
         address: contractAddresses.nft,
@@ -193,7 +197,7 @@ const CreateComp = () => {
       const { price } = inputNft;
       const _price = ethers.parseEther(price.toString());
 
-      await writeContractMakeItem({
+      await writeContractNftApprove({
         abi: marketplaceAbi,
         address: contractAddresses.marketplace,
         functionName: "makeItem",
@@ -252,7 +256,7 @@ const CreateComp = () => {
           <button
             disabled={isDisabledButton()}
             onClick={createNft}
-            className={`${isDisabledButton() ? "opacity-40" : "opacity-100"} w-full mt-5 font-bold bg-blue-500 text-white p-3 rounded-lg`}
+            className={`${isDisabledButton() ? "opacity-90" : "opacity-100"} w-full mt-5 font-bold bg-blue-500 text-white p-3 rounded-lg`}
           >
             {isPendingNftMint ? <Spin /> : <span>CREATE & LIST NFT</span>}
           </button>
