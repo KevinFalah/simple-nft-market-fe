@@ -4,11 +4,9 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import {
   useAccount,
-  useCall,
   useReadContract,
   useReadContracts,
   useWaitForTransactionReceipt,
-  useWatchPendingTransactions,
   useWriteContract,
 } from "wagmi";
 import { Card, Spin } from "antd";
@@ -86,7 +84,7 @@ export default function Home() {
     try {
       const response = await fetch(uri);
       const metadata = await response.json();
-      // console.log(uri, response, "<- res ");
+
       return metadata;
     } catch (error) {
       console.error("Error fetching URI:", error);
@@ -152,7 +150,7 @@ export default function Home() {
   const loadCards = async () => {
     try {
       const data = await itemCards();
-      console.log(data, '<- ')
+      console.log(data, "<- ");
       setCards(data);
     } catch (err: any) {
       console.log(err, "<- err loadCards");
